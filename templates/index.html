@@ -30,31 +30,37 @@
 
 			<div class="table-container">
 				<div class="inner-table-container">
-					<table id="processing" class="display">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Product</th>
-								<th>Description</th>
-								<th>Added On</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for item in data %}
-								<tr>
-									<td>{{loop.index}}</td>
-									<td>{{item.product_name}}</td>
-									<td>{{item.product_description}}</td>
-									<td>{{item.added_on}}</td>
-									<td>
-										<a href="/update/{{item.id}}" class="tag tag-big-default">Update</a>
-										<a href="/delete/{{item.id}}" class="tag tag-big-danger">Delete</a>
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+					
+							{% if data|length==0 %}
+								<p>No records available.</p>
+							{% else %}
+							<table id="processing" class="display">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Product</th>
+										<th>Description</th>
+										<th>Added On</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for item in data %}
+									<tr>
+										<td>{{loop.index}}</td>
+										<td>{{item.product_name}}</td>
+										<td>{{item.product_description}}</td>
+										<td>{{item.added_on}}</td>
+										<td>
+											<a href="/update/{{item.id}}" class="tag tag-big-default">Update</a>
+											<a href="/delete/{{item.id}}" class="tag tag-big-danger">Delete</a>
+										</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+							
+							{% endif %}
 				</div>
 			</div>
         </div>
