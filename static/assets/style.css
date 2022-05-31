@@ -14,3 +14,74 @@ body{
     grid-template-columns: 30% 70%;
     height: 100vh;
 }
+
+.app-title{
+    font-size: 30px;
+    color: #0039a6;
+    width: 80%;
+    margin: 100px auto;
+}
+.form-container{
+    background-color: #ffffff;
+    position: relative;
+}
+
+.table-container{
+    background-color: #F8F8FF;
+}
+
+form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    width: 80%;
+}
+
+form .form-control{
+    width: 100%;
+    outline: none;
+    border: 2px solid whitesmoke;
+    padding: 12px;
+    border-radius: 2px;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 15px;
+    transition: border 1s linear;
+}
+
+textarea{
+    resize: none;
+}
+
+.mb-3{
+    margin-bottom: 30px;
+}
+
+.mb-1{
+    margin-bottom: 10px;
+}
+
+
+.input-title{
+    font-size: 15px;
+}
+
+.btn{
+    outline: none;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 2px;
+    background-color: transparent;
+    font-family: 'Montserrat', sans-serif !important;
+    cursor: pointer;
+}
+
+.btn-primary{
+    background-color: #0039a6;
+    color: #ffffff;
+}
+
+.form-control:focus{
+    border: 2px solid #0039a6;
+}
