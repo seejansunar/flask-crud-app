@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -26,16 +26,17 @@ def hello_world():
         catalog = Catalog(product_name=name, product_description=description)
         db.session.add(catalog)
         db.session.commit()
-        
+
     allProducts = Catalog.query.all()
 
     return render_template('index.html', data=allProducts)
 
-@app.route('/show')
-def products():
-    allProducts = Catalog.query.all()
-    print(allProducts)
-    return "Hello, world!"
+@app.route('/delete/<int:id>')
+def delete(id):
+    item = Catalog.query.filter_by(id=id).first()
+    db.session.delete(item)
+    db.session.commit()
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

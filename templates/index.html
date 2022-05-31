@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/assets/style.css">
-	<link rel="stylesheet" href="../static/assets/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="../static/assets/jquery.dataTables.min.css">
+		<link rel="stylesheet" href="../static/style.css">
 </head>
   <body>
     	<div class="container">
@@ -46,7 +47,10 @@
 									<td>{{item.product_name}}</td>
 									<td>{{item.product_description}}</td>
 									<td>{{item.added_on}}</td>
-									<td>Action</td>
+									<td>
+										<a href="/update/{{item.id}}" class="tag tag-big-default">Update</a>
+										<a href="/delete/{{item.id}}" class="tag tag-big-danger">Delete</a>
+									</td>
 								</tr>
 							{% endfor %}
 						</tbody>
