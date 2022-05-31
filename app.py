@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -18,15 +18,15 @@ class Catalog(db.Model):
     def __repr__(self) -> str:
         return f"{self.id} - {self.product_name}"
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def hello_world():
-    return render_template('index.html')
-
-@app.route('/add_product')
-def add_product():
-    catalog = Catalog(product_name="Lenovo G50-80", product_description="My first product")
-    db.session.add(catalog)
-    db.session.commit()
+    if request.method == 'POST':
+        name = request.form['product_name']
+        description = request.form['product_description']
+        catalog = Catalog(product_name=name, product_description=description)
+        db.session.add(catalog)
+        db.session.commit()
+        
     allProducts = Catalog.query.all()
 
     return render_template('index.html', data=allProducts)

@@ -14,14 +14,14 @@
     	<div class="container">
 			<div class="form-container">
 				<h3 class="app-title">Product Catalog</h3>
-				<form>
+				<form action="/" method="POST">
 					<div class="mb-3">
 						<p class="input-title mb-1">Product Name</p>
-						<input type="text" class="form-control" id="exampleInputProduct" aria-describedby="emailHelp">
+						<input name="product_name" type="text" class="form-control" id="exampleInputProduct">
 					</div>
 					<div class="mb-3">
 						<p class="input-title mb-1">Product Description</p>
-						<textarea  class="form-control" name="" id="" cols="30" rows="10"></textarea>
+						<textarea  class="form-control" name="product_description" id="" cols="30" rows="10"></textarea>
 					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
