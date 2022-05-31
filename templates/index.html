@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Product Catalog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
@@ -35,12 +35,20 @@
 								<th>ID</th>
 								<th>Product</th>
 								<th>Description</th>
+								<th>Added On</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-	
-						
+							{% for item in data %}
+								<tr>
+									<td>{{loop.index}}</td>
+									<td>{{item.product_name}}</td>
+									<td>{{item.product_description}}</td>
+									<td>{{item.added_on}}</td>
+									<td>Action</td>
+								</tr>
+							{% endfor %}
 						</tbody>
 					</table>
 				</div>
@@ -50,14 +58,11 @@
     </div>
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 	<script src="../static/assets/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    
 	<script>
 		$(document).ready(function () {
 			$('#processing').DataTable({
-				'columnDefs': [ {
-					'targets': [0], /* column index */
-					'orderable': false, /* true or false */
-				}]
+				
 			});
 			
 		});

@@ -88,5 +88,9 @@ textarea{
 
 .inner-table-container{
     width: 80%;
-    margin: 100px auto;
+    margin: 50px auto;
+}
+
+.table-container td{
+    font-size: 12px !important;
 }

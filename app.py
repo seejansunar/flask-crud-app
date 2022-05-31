@@ -27,11 +27,15 @@ def add_product():
     catalog = Catalog(product_name="Lenovo G50-80", product_description="My first product")
     db.session.add(catalog)
     db.session.commit()
-    return render_template('index.html', catalog=catalog)
+    allProducts = Catalog.query.all()
 
-@app.route('/products')
+    return render_template('index.html', data=allProducts)
+
+@app.route('/show')
 def products():
-    return "this is a product page."
+    allProducts = Catalog.query.all()
+    print(allProducts)
+    return "Hello, world!"
 
 if __name__ == '__main__':
     app.run(debug=True)
