@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+from sqlalchemy import true
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///catalog.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -19,6 +21,13 @@ class Catalog(db.Model):
 @app.route('/')
 def hello_world():
     return render_template('index.html')
+
+@app.route('/add_product')
+def add_product():
+    catalog = Catalog(product_name="Lenovo G50-80", product_description="My first product")
+    db.session.add(catalog)
+    db.session.commit()
+    return render_template('index.html', catalog=catalog)
 
 @app.route('/products')
 def products():
