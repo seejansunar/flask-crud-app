@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+    	<div class="container">
+			<div class="form-container">
+				<h3 class="app-title">Update Product</h3>
+				<form action="/update/{{data.id}}" method="POST">
+					<div class="mb-3">
+						<p class="input-title mb-1">Product Name</p>
+						<input name="product_name" type="text" value="{{data.product_name}}" class="form-control" id="exampleInputProduct">
+					</div>
+					<div class="mb-3">
+						<p class="input-title mb-1">Product Description</p>
+						<textarea  class="form-control" name="product_description" value="" id="" cols="30" rows="10">{{data.product_description}}</textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Update</button>
+				</form>
+			</div>
+
+			
+        </div>
+        
+    </div>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="../static/assets/jquery.dataTables.min.js"></script>
+    
+	<script>
+		$(document).ready(function () {
+			$('#processing').DataTable({
+				
+			});
+			
+		});
+	</script>
+{% endblock body %}

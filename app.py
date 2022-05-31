@@ -31,6 +31,21 @@ def hello_world():
 
     return render_template('index.html', data=allProducts)
 
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    if request.method == 'POST':
+        name = request.form['product_name']
+        description = request.form['product_description']
+        item = Catalog.query.filter_by(id=id).first()
+        item.product_name = name
+        item.product_description = description
+        db.session.add(item)
+        db.session.commit()
+        return redirect('/')
+        
+    item = Catalog.query.filter_by(id=id).first()
+    return render_template('update.html', data=item)
+
 @app.route('/delete/<int:id>')
 def delete(id):
     item = Catalog.query.filter_by(id=id).first()
